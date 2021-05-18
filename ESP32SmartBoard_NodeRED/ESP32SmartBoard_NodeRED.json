@@ -1,0 +1,937 @@
+[
+    {
+        "id": "31f5f1ad.9800ae",
+        "type": "tab",
+        "label": "SmartBoard_Template",
+        "disabled": false,
+        "info": ""
+    },
+    {
+        "id": "f07599ff.821698",
+        "type": "debug",
+        "z": "31f5f1ad.9800ae",
+        "name": "SmBrd_Heartbeat_Timer",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "x": 970,
+        "y": 780,
+        "wires": []
+    },
+    {
+        "id": "c57ff74.febff08",
+        "type": "mqtt out",
+        "z": "31f5f1ad.9800ae",
+        "name": "",
+        "topic": "SmBrd/240AC4617D20/Settings/Heartbeat",
+        "qos": "0",
+        "retain": "true",
+        "broker": "881c989c.a5262",
+        "x": 1030,
+        "y": 820,
+        "wires": []
+    },
+    {
+        "id": "1cec93cf.8dafe4",
+        "type": "bigtimer",
+        "z": "31f5f1ad.9800ae",
+        "outtopic": "/BigTimer",
+        "outpayload1": "1",
+        "outpayload2": "0",
+        "name": "Heartbeat On/Off Timer",
+        "comment": "Timer Heartbeat",
+        "lat": 0,
+        "lon": 0,
+        "starttime": "480",
+        "endtime": "1260",
+        "starttime2": 0,
+        "endtime2": 0,
+        "startoff": 0,
+        "endoff": 0,
+        "startoff2": 0,
+        "endoff2": 0,
+        "offs": 0,
+        "outtext1": "on",
+        "outtext2": "off",
+        "timeout": 1440,
+        "sun": true,
+        "mon": true,
+        "tue": true,
+        "wed": true,
+        "thu": true,
+        "fri": true,
+        "sat": true,
+        "jan": true,
+        "feb": true,
+        "mar": true,
+        "apr": true,
+        "may": true,
+        "jun": true,
+        "jul": true,
+        "aug": true,
+        "sep": true,
+        "oct": true,
+        "nov": true,
+        "dec": true,
+        "day1": 0,
+        "month1": 0,
+        "day2": 0,
+        "month2": 0,
+        "day3": 0,
+        "month3": 0,
+        "day4": 0,
+        "month4": 0,
+        "day5": 0,
+        "month5": 0,
+        "day6": 0,
+        "month6": 0,
+        "day7": 0,
+        "month7": 0,
+        "day8": 0,
+        "month8": 0,
+        "day9": 0,
+        "month9": 0,
+        "day10": 0,
+        "month10": 0,
+        "day11": 0,
+        "month11": 0,
+        "day12": 0,
+        "month12": 0,
+        "d1": 0,
+        "w1": 0,
+        "d2": 0,
+        "w2": 0,
+        "d3": 0,
+        "w3": 0,
+        "d4": 0,
+        "w4": 0,
+        "d5": 0,
+        "w5": 0,
+        "d6": 0,
+        "w6": 0,
+        "xday1": 0,
+        "xmonth1": 0,
+        "xday2": 0,
+        "xmonth2": 0,
+        "xday3": 0,
+        "xmonth3": 0,
+        "xday4": 0,
+        "xmonth4": 0,
+        "xday5": 0,
+        "xmonth5": 0,
+        "xday6": 0,
+        "xmonth6": 0,
+        "xday7": 0,
+        "xmonth7": 0,
+        "xday8": 0,
+        "xmonth8": 0,
+        "xday9": 0,
+        "xmonth9": 0,
+        "xday10": 0,
+        "xmonth10": 0,
+        "xday11": 0,
+        "xmonth11": 0,
+        "xday12": 0,
+        "xmonth12": 0,
+        "xd1": 0,
+        "xw1": 0,
+        "xd2": 0,
+        "xw2": 0,
+        "xd3": 0,
+        "xw3": 0,
+        "xd4": 0,
+        "xw4": 0,
+        "xd5": 0,
+        "xw5": 0,
+        "xd6": 0,
+        "xw6": 0,
+        "suspend": false,
+        "random": false,
+        "randon1": false,
+        "randoff1": false,
+        "randon2": false,
+        "randoff2": false,
+        "repeat": false,
+        "atstart": true,
+        "odd": false,
+        "even": false,
+        "x": 650,
+        "y": 840,
+        "wires": [
+            [
+                "f07599ff.821698",
+                "cd798d49.d1ad78",
+                "c57ff74.febff08"
+            ],
+            [
+                "bb8d6fa4.d8ea1"
+            ],
+            []
+        ]
+    },
+    {
+        "id": "cd798d49.d1ad78",
+        "type": "ui_led",
+        "z": "31f5f1ad.9800ae",
+        "group": "4770f576.ff810c",
+        "order": 12,
+        "width": "0",
+        "height": "0",
+        "label": "Current Heartbeat State",
+        "labelPlacement": "left",
+        "labelAlignment": "left",
+        "colorForValue": [
+            {
+                "color": "dimgray",
+                "value": "0",
+                "valueType": "str"
+            },
+            {
+                "color": "lightskyblue",
+                "value": "1",
+                "valueType": "str"
+            }
+        ],
+        "allowColorForValueInMessage": false,
+        "name": "Heartbeat State",
+        "x": 940,
+        "y": 880,
+        "wires": []
+    },
+    {
+        "id": "98a469ee.99ca18",
+        "type": "ui_gauge",
+        "z": "31f5f1ad.9800ae",
+        "name": "Humidity",
+        "group": "908b7e93.714c3",
+        "order": 9,
+        "width": "3",
+        "height": "2",
+        "gtype": "donut",
+        "title": "Humidity",
+        "label": "%rH",
+        "format": "{{value}}",
+        "min": "0",
+        "max": "100",
+        "colors": [
+            "#e6e600",
+            "#00b500",
+            "#ca3838"
+        ],
+        "seg1": "40",
+        "seg2": "70",
+        "x": 920,
+        "y": 280,
+        "wires": []
+    },
+    {
+        "id": "18226969.970b6f",
+        "type": "ui_level",
+        "z": "31f5f1ad.9800ae",
+        "group": "908b7e93.714c3",
+        "order": 4,
+        "width": "3",
+        "height": "2",
+        "name": "Temperature",
+        "label": "Temperature",
+        "colorHi": "#e60000",
+        "colorWarn": "#008040",
+        "colorNormal": "#ff8000",
+        "colorOff": "#c0c0c0",
+        "min": 0,
+        "max": "45",
+        "segWarn": "15",
+        "segHigh": "30",
+        "unit": "°C",
+        "layout": "sv",
+        "channelA": "",
+        "channelB": "",
+        "decimals": "1",
+        "animations": "soft",
+        "shape": "2",
+        "colorschema": "valuedriven",
+        "textoptions": "default",
+        "colorText": "#eeeeee",
+        "fontLabel": "",
+        "fontValue": "",
+        "fontSmall": "",
+        "colorFromTheme": true,
+        "textAnimations": false,
+        "hideValue": false,
+        "tickmode": "segments",
+        "peakmode": false,
+        "peaktime": 3000,
+        "x": 930,
+        "y": 240,
+        "wires": []
+    },
+    {
+        "id": "793ee9cb.de7cc",
+        "type": "mqtt in",
+        "z": "31f5f1ad.9800ae",
+        "name": "",
+        "topic": "SmBrd/240AC4617D20/#",
+        "qos": "0",
+        "datatype": "auto",
+        "broker": "881c989c.a5262",
+        "x": 210,
+        "y": 280,
+        "wires": [
+            [
+                "adc95909.6acff",
+                "a28e6f0e.9ccc4",
+                "99d5f28.b93ed1"
+            ]
+        ]
+    },
+    {
+        "id": "adc95909.6acff",
+        "type": "function",
+        "z": "31f5f1ad.9800ae",
+        "name": "Sensor_Decoder",
+        "func": "\nvar strTopic;\nvar iIdx;\nvar strSensor;\n\nstrTopic = msg.topic;\n\n// get sensor name (right part of topic after last slash)\niIdx = strTopic.lastIndexOf(\"/\");\nstrSensor = strTopic.substr(iIdx+1);\nmsg.topic = strSensor;\n\n// switch sensor date to corresponding output (connected to assoziated GUI element) \nswitch (strSensor)\n{\n    case \"Temperature\":     return [msg, null, null];\n    case \"Humidity\":        return [null, msg, null];\n    case \"CO2\":             return [null, null, msg];\n}\n\nreturn [null, null, null];\n\n",
+        "outputs": 3,
+        "noerr": 0,
+        "x": 530,
+        "y": 280,
+        "wires": [
+            [
+                "18226969.970b6f"
+            ],
+            [
+                "98a469ee.99ca18"
+            ],
+            [
+                "5a80c7ed.67ce5"
+            ]
+        ]
+    },
+    {
+        "id": "5a80c7ed.67ce5",
+        "type": "ui_gauge",
+        "z": "31f5f1ad.9800ae",
+        "name": "CO2 Level",
+        "group": "908b7e93.714c3",
+        "order": 12,
+        "width": "3",
+        "height": "2",
+        "gtype": "gage",
+        "title": "CO2",
+        "label": "ppm",
+        "format": "{{value}}",
+        "min": "0",
+        "max": "3000",
+        "colors": [
+            "#00b400",
+            "#e6e600",
+            "#ca3838"
+        ],
+        "seg1": "1000",
+        "seg2": "2000",
+        "x": 930,
+        "y": 320,
+        "wires": []
+    },
+    {
+        "id": "2a297cfb.f22f54",
+        "type": "ui_table",
+        "z": "31f5f1ad.9800ae",
+        "group": "908b7e93.714c3",
+        "name": "Sensor Data",
+        "order": 15,
+        "width": "8",
+        "height": "3",
+        "columns": [
+            {
+                "field": "id",
+                "title": "No",
+                "width": "13%",
+                "align": "left",
+                "formatter": "plaintext",
+                "formatterParams": {
+                    "target": "_blank"
+                }
+            },
+            {
+                "field": "Sensor",
+                "title": "Sensor",
+                "width": "25%",
+                "align": "left",
+                "formatter": "plaintext",
+                "formatterParams": {
+                    "target": "_blank"
+                }
+            },
+            {
+                "field": "Value",
+                "title": "Value",
+                "width": "20%",
+                "align": "left",
+                "formatter": "html",
+                "formatterParams": {
+                    "target": "_blank"
+                }
+            },
+            {
+                "field": "Timestamp",
+                "title": "Timestamp",
+                "width": "",
+                "align": "left",
+                "formatter": "plaintext",
+                "formatterParams": {
+                    "target": "_blank"
+                }
+            }
+        ],
+        "outputs": 1,
+        "cts": true,
+        "x": 930,
+        "y": 440,
+        "wires": [
+            [
+                "6608cb2f.4f5f7c"
+            ]
+        ]
+    },
+    {
+        "id": "1e25c783.c6178",
+        "type": "inject",
+        "z": "31f5f1ad.9800ae",
+        "name": "Event_Init",
+        "topic": "",
+        "payload": "0",
+        "payloadType": "num",
+        "repeat": "",
+        "crontab": "",
+        "once": true,
+        "onceDelay": 0.1,
+        "x": 190,
+        "y": 460,
+        "wires": [
+            [
+                "817282ec.11ba08"
+            ]
+        ]
+    },
+    {
+        "id": "817282ec.11ba08",
+        "type": "function",
+        "z": "31f5f1ad.9800ae",
+        "name": "Table_Init",
+        "func": "\n// define and initialize Table structure\nmsg.payload=[];\nmsg.payload.push\n(\n    { \"id\":1, \"Sensor\":\"Temperature\", \"Value\":\"-\", \"Timestamp\":\"-\" },\n    { \"id\":2, \"Sensor\":\"Humidity\",    \"Value\":\"-\", \"Timestamp\":\"-\" },\n    { \"id\":3, \"Sensor\":\"CO2\",         \"Value\":\"-\", \"Timestamp\":\"-\" },\n    { \"id\":4, \"Sensor\":\"SensTemp\",    \"Value\":\"-\", \"Timestamp\":\"-\" }\n);\n\nreturn msg;\n\n",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 520,
+        "y": 460,
+        "wires": [
+            [
+                "2a297cfb.f22f54",
+                "6608cb2f.4f5f7c"
+            ]
+        ]
+    },
+    {
+        "id": "a28e6f0e.9ccc4",
+        "type": "function",
+        "z": "31f5f1ad.9800ae",
+        "name": "Table_Update",
+        "func": "\nvar  strTopic;\nvar  strPayload;\nvar  iID;\nvar  strSensor;\nvar  strValue;\nvar  dtTimeStamp;\nvar  strTimestamp;\nvar  iIdx;\n\nstrTopic = msg.topic;\nstrPayload = msg.payload;\n\n// get sensor name (right part of topic after last slash)\niIdx = strTopic.lastIndexOf('/');\nstrSensor = strTopic.substring(iIdx + 1);\n\n// process sensor data\nswitch (strSensor)\n{\n    case \"Temperature\":\n    {\n        iID = 1;\n        strValue = strPayload;\n        break;\n    }\n    case \"Humidity\":\n    {\n        iID = 2;\n        strValue = strPayload;\n        break;\n    }\n\n    case \"CO2\":\n    {\n        iID = 3;\n        strValue = strPayload;\n        break;\n    }\n\n    case \"SensTemp\":\n    {\n        iID = 4;\n        strValue = strPayload;\n        break;\n    }\n\n    default:\n    {\n        return;\n    }\n}\n\n\n// build Timestamp\ndtTimeStamp = new Date();\nstrTimestamp = dtTimeStamp.getFullYear() + \"-\" +\n               ('0'+(dtTimeStamp.getMonth() + 1)).slice(-2) + \"-\" +\n               ('0'+ dtTimeStamp.getDate()).slice(-2) + \" - \" +\n               ('0'+ dtTimeStamp.getHours()).slice(-2) + \":\" +\n               ('0'+ dtTimeStamp.getMinutes()).slice(-2) + \":\" +\n               ('0'+ dtTimeStamp.getSeconds()).slice(-2);\n\n\n// build message to send\nmsg.payload = {\n    command: \"updateOrAddData\",\n    arguments: [\n        [\n            {\n                \"id\": iID,\n                \"Sensor\": strSensor,\n                \"Value\": strValue,\n                \"Timestamp\": strTimestamp\n            }\n        ]\n    ],\n    returnPromise: true\n}\n\n\nreturn msg;\n\n",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 520,
+        "y": 420,
+        "wires": [
+            [
+                "2a297cfb.f22f54"
+            ]
+        ]
+    },
+    {
+        "id": "6608cb2f.4f5f7c",
+        "type": "function",
+        "z": "31f5f1ad.9800ae",
+        "name": "Table_Recorder",
+        "func": "var status = {fill:\"red\",shape:\"ring\",text:\"an error occured\"};\nvar success = (msg.topic && msg.topic===\"success\") || false;\nvar tableData = flow.get(\"tableData\");\nif (tableData === undefined) {\n    tableData = [];\n    flow.set(\"tableData\",tableData);\n}\n\n// find the index for a row in tableData for a given index (id)\nfunction checkIndex(id) {\n    let matchRow=-1\n    tableData.forEach(function (row,index){\n        if (row.id === id){\n            matchRow=index;\n            return matchRow;\n        }\n    })\n    return matchRow;\n}\n\n// flat merge one row \nfunction mergeRow(dest,source) {\n    Object.keys(source).forEach(function(key) {\n        dest[key]=source[key];\n    })\n}\n\n//merge or add one or many rows into tableData \nfunction mergeData(newData,toTop) {\n    newData.forEach(function (item,index) {\n        node.warn([\"findIndex\",item]);\n        let row=checkIndex(item.id);\n        if (row<0) { // row do not existst in tableData\n            if (toTop) {\n                tableData.push(item);\n                status.text+=\"newRow @ top\";\n            } else {\n                tableData.unshift(item);\n                status.text+=\"newRow @ bottom\";\n            }\n            return;\n        } else { // row exists so update\n            mergeRow(tableData[row],item);\n            status.text+=\"row updated\";\n            return;\n        }\n        if (status.text!==\"\") node.status(status);\n    });\n}\n\nswitch (typeof msg.payload){\n    case \"string\":\n        node.warn([\"[table recorder] \",(typeof msg.payload),msg.payload]);\n        switch (msg.payload){\n            case \"change\":\n                status={fill:\"green\",shape:\"dot\",text:\"table restored \"+tableData.length+\" rows\"};\n                msg.payload=tableData;\n                break;\n        }\n        break;\n    case \"object\":\n        node.warn([\"[table recorder] \",(typeof msg.payload),msg.payload]);\n        if (Array.isArray(msg.payload)) { // replace all tableData\n            status={fill:\"green\",shape:\"dot\",text:\"table replaced \"+msg.payload.length+\" rows\"};\n            tableData=RED.util.cloneMessage(msg.payload); \n        } else {\n            switch (msg.payload.command) { // clearData does not return a promise!\n                case \"clearData\":\n                    status={fill:\"green\",shape:\"dot\",text:\"clearData: done\"};\n                    tableData=[];\n                    flow.set(\"lastId\",0);\n                    break;                \n            }\n        }\n        break;\n    default: // likely a msg fom a ui-table command or callback\n        if (msg.hasOwnProperty(\"topic\")&&\n            msg.hasOwnProperty(\"ui_control\") && \n            msg.ui_control.hasOwnProperty(\"callback\") &&\n            msg.hasOwnProperty(\"return\")) { // message originates from a ui-table callback\n            if (success) {\n                switch(msg.return.command) {\n                    case \"addRow\":\n                        status.text=\"addRow: \";\n                        mergeData(msg.return.arguments[0],msg.return.arguments[1]);\n                        status.shape=\"dot\";\n                        break;\n                    case \"updateOrAddData\":\n                        status.text=\"updateOrAddData: \";\n                        mergeData(msg.return.arguments[0]);\n                        break;\n                    case \"deleteRow\":\n                        let row=checkIndex(msg.return.arguments[0]);\n                        tableData.splice(row,1);\n                        status.shape=\"dot\";\n                        status.text=\"deleteRow: \"+row+\" deleted\";\n                        break;\n                    default:\n                        status={fill:\"yellow\",shape:\"dot\",text:msg.return.command + \" unknown!\"};\n                        break;         \n                }\n            } else {\n                status.text=msg.topic+\" \"+msg.error;\n            }\n        }\n        break;\n}\nif (success) status.fill=\"green\";\nflow.set(\"tableData\",tableData);\nnode.status(status);\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 940,
+        "y": 520,
+        "wires": [
+            [
+                "2a297cfb.f22f54"
+            ]
+        ]
+    },
+    {
+        "id": "4cf00097.88f0f",
+        "type": "ui_button",
+        "z": "31f5f1ad.9800ae",
+        "name": "Refresh Table",
+        "group": "908b7e93.714c3",
+        "order": 17,
+        "width": 0,
+        "height": 0,
+        "passthru": true,
+        "label": "Refresh",
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "",
+        "icon": "",
+        "payload": "change",
+        "payloadType": "str",
+        "topic": "",
+        "x": 520,
+        "y": 520,
+        "wires": [
+            [
+                "6608cb2f.4f5f7c"
+            ]
+        ]
+    },
+    {
+        "id": "6bbc4e70.e0c748",
+        "type": "ui_ui_control",
+        "z": "31f5f1ad.9800ae",
+        "name": "",
+        "events": "all",
+        "x": 160,
+        "y": 520,
+        "wires": [
+            [
+                "4cf00097.88f0f"
+            ]
+        ]
+    },
+    {
+        "id": "88b59dca.750a58",
+        "type": "comment",
+        "z": "31f5f1ad.9800ae",
+        "name": "---- Status Table ----",
+        "info": "",
+        "x": 530,
+        "y": 360,
+        "wires": []
+    },
+    {
+        "id": "18f1becb.12c511",
+        "type": "comment",
+        "z": "31f5f1ad.9800ae",
+        "name": "---- Sensor Data Instruments ----",
+        "info": "",
+        "x": 570,
+        "y": 220,
+        "wires": []
+    },
+    {
+        "id": "b9610855.09dba",
+        "type": "comment",
+        "z": "31f5f1ad.9800ae",
+        "name": "---- Heartbeat On/Off Timer ----",
+        "info": "",
+        "x": 570,
+        "y": 760,
+        "wires": []
+    },
+    {
+        "id": "99d5f28.b93ed1",
+        "type": "function",
+        "z": "31f5f1ad.9800ae",
+        "name": "InfluxDB_Insert",
+        "func": "\nvar  strTopic;\nvar  astrTopicItems;\nvar  strPayload;\nvar  strSensor;\nvar  strMeasurement;\nvar  Value;\nvar  iIdx;\n\nstrTopic = msg.topic;\nstrPayload = msg.payload;\n\n// get sensor name (right part of topic after last slash)\niIdx = strTopic.lastIndexOf('/');\nstrSensor = strTopic.substring(iIdx + 1);\n\n// get measurement name (following to 'SmBrd/')\nastrTopicItems = strTopic.split(\"/\");\nstrMeasurement = astrTopicItems[1];\n\n// parse sensor value\nValue = parseFloat(strPayload);\nif ( isNaN(Value) )\n{\n    Value = strPayload;\n}\n\n// build message to send\nmsg.payload = {\n    [strSensor]: Value\n}\n// the measurement property is reused by the InfluxDB Node,\n// therefore the measurement name does not need to by specified\n// in the InfluxDB Node itself (allows more generic flow)\nmsg.measurement = strMeasurement;\n\nreturn msg;\n\n",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 520,
+        "y": 140,
+        "wires": [
+            [
+                "4ae58f08.ea375"
+            ]
+        ]
+    },
+    {
+        "id": "34af637f.1d648c",
+        "type": "debug",
+        "z": "31f5f1ad.9800ae",
+        "name": "SmBrd_InfluxDB_Insert",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "x": 970,
+        "y": 100,
+        "wires": []
+    },
+    {
+        "id": "be4d6d5e.09451",
+        "type": "influxdb out",
+        "z": "31f5f1ad.9800ae",
+        "influxdb": "d4941965.e3bcf8",
+        "name": "",
+        "measurement": "",
+        "precision": "",
+        "retentionPolicy": "",
+        "x": 990,
+        "y": 140,
+        "wires": []
+    },
+    {
+        "id": "4ae58f08.ea375",
+        "type": "gate",
+        "z": "31f5f1ad.9800ae",
+        "name": "Gate",
+        "controlTopic": "control",
+        "defaultState": "open",
+        "openCmd": "open",
+        "closeCmd": "close",
+        "toggleCmd": "toggle",
+        "defaultCmd": "default",
+        "x": 730,
+        "y": 120,
+        "wires": [
+            [
+                "be4d6d5e.09451",
+                "34af637f.1d648c"
+            ]
+        ]
+    },
+    {
+        "id": "3c8c2a3e.fca616",
+        "type": "ui_switch",
+        "z": "31f5f1ad.9800ae",
+        "name": "Enable Write to InfluxDB",
+        "label": "Write to InfluxDB",
+        "tooltip": "",
+        "group": "c1ab55e7.0031e8",
+        "order": 1,
+        "width": 0,
+        "height": 0,
+        "passthru": true,
+        "decouple": "false",
+        "topic": "control",
+        "style": "",
+        "onvalue": "open",
+        "onvalueType": "str",
+        "onicon": "",
+        "oncolor": "",
+        "offvalue": "close",
+        "offvalueType": "str",
+        "officon": "",
+        "offcolor": "",
+        "x": 490,
+        "y": 100,
+        "wires": [
+            [
+                "4ae58f08.ea375"
+            ]
+        ]
+    },
+    {
+        "id": "733203c1.601ee4",
+        "type": "comment",
+        "z": "31f5f1ad.9800ae",
+        "name": "---- Write to InfluxDB ----",
+        "info": "",
+        "x": 550,
+        "y": 40,
+        "wires": []
+    },
+    {
+        "id": "15b4c092.e97957",
+        "type": "inject",
+        "z": "31f5f1ad.9800ae",
+        "name": "Event_Open",
+        "topic": "",
+        "payload": "open",
+        "payloadType": "str",
+        "repeat": "",
+        "crontab": "",
+        "once": true,
+        "onceDelay": 0.1,
+        "x": 190,
+        "y": 100,
+        "wires": [
+            [
+                "3c8c2a3e.fca616"
+            ]
+        ]
+    },
+    {
+        "id": "81c5d819.fd02a8",
+        "type": "ui_dropdown",
+        "z": "31f5f1ad.9800ae",
+        "name": "LED Bar Indicator",
+        "label": "",
+        "tooltip": "",
+        "place": "",
+        "group": "92161f53.5af3d8",
+        "order": 1,
+        "width": 0,
+        "height": 0,
+        "passthru": true,
+        "multiple": false,
+        "options": [
+            {
+                "label": "-Off-",
+                "value": "0",
+                "type": "str"
+            },
+            {
+                "label": "Temperature",
+                "value": "1",
+                "type": "str"
+            },
+            {
+                "label": "Humidity",
+                "value": "2",
+                "type": "str"
+            },
+            {
+                "label": "CO2",
+                "value": "3",
+                "type": "str"
+            }
+        ],
+        "payload": "",
+        "topic": "",
+        "x": 550,
+        "y": 660,
+        "wires": [
+            [
+                "321f7890.553508",
+                "311b459c.bd1eaa"
+            ]
+        ]
+    },
+    {
+        "id": "321f7890.553508",
+        "type": "debug",
+        "z": "31f5f1ad.9800ae",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "x": 930,
+        "y": 640,
+        "wires": []
+    },
+    {
+        "id": "baefc4a6.af6c7",
+        "type": "inject",
+        "z": "31f5f1ad.9800ae",
+        "name": "Event_CO2",
+        "topic": "",
+        "payload": "3",
+        "payloadType": "str",
+        "repeat": "",
+        "crontab": "",
+        "once": true,
+        "onceDelay": 0.1,
+        "x": 190,
+        "y": 660,
+        "wires": [
+            [
+                "81c5d819.fd02a8"
+            ]
+        ]
+    },
+    {
+        "id": "bf6b98ac.c154d",
+        "type": "comment",
+        "z": "31f5f1ad.9800ae",
+        "name": "---- LED Bar Indicator ----",
+        "info": "",
+        "x": 550,
+        "y": 600,
+        "wires": []
+    },
+    {
+        "id": "311b459c.bd1eaa",
+        "type": "mqtt out",
+        "z": "31f5f1ad.9800ae",
+        "name": "",
+        "topic": "SmBrd/240AC4617D20/Settings/LedBarIndicator",
+        "qos": "0",
+        "retain": "true",
+        "broker": "881c989c.a5262",
+        "x": 1050,
+        "y": 680,
+        "wires": []
+    },
+    {
+        "id": "bb8d6fa4.d8ea1",
+        "type": "ui_text",
+        "z": "31f5f1ad.9800ae",
+        "group": "4770f576.ff810c",
+        "order": 14,
+        "width": 0,
+        "height": 0,
+        "name": "",
+        "label": "Timer State",
+        "format": "<font size=\"2\">{{msg.extState}}</font>",
+        "layout": "row-spread",
+        "x": 930,
+        "y": 920,
+        "wires": []
+    },
+    {
+        "id": "450b3fc1.6d84",
+        "type": "ui_dropdown",
+        "z": "31f5f1ad.9800ae",
+        "name": "Heartbeat Mode",
+        "label": "",
+        "tooltip": "",
+        "place": "Select option",
+        "group": "4770f576.ff810c",
+        "order": 1,
+        "width": 0,
+        "height": 0,
+        "passthru": true,
+        "multiple": false,
+        "options": [
+            {
+                "label": "Timer Automatic",
+                "value": "auto",
+                "type": "str"
+            },
+            {
+                "label": "On (next 24h)",
+                "value": "manual on",
+                "type": "str"
+            },
+            {
+                "label": "Off (next 24h)",
+                "value": "manual off",
+                "type": "str"
+            },
+            {
+                "label": "Timer -Off-",
+                "value": "quiet",
+                "type": "str"
+            }
+        ],
+        "payload": "",
+        "topic": "",
+        "x": 420,
+        "y": 840,
+        "wires": [
+            [
+                "1cec93cf.8dafe4"
+            ]
+        ]
+    },
+    {
+        "id": "3ab28b3a.3c8014",
+        "type": "inject",
+        "z": "31f5f1ad.9800ae",
+        "name": "Init_HeatbeatMode",
+        "topic": "",
+        "payload": "auto",
+        "payloadType": "str",
+        "repeat": "",
+        "crontab": "",
+        "once": true,
+        "onceDelay": 0.1,
+        "x": 210,
+        "y": 840,
+        "wires": [
+            [
+                "450b3fc1.6d84"
+            ]
+        ]
+    },
+    {
+        "id": "881c989c.a5262",
+        "type": "mqtt-broker",
+        "z": "",
+        "name": "IoTHomeServer",
+        "broker": "127.0.0.1",
+        "port": "1883",
+        "clientid": "NodeRed@Raspi",
+        "usetls": false,
+        "compatmode": false,
+        "keepalive": "60",
+        "cleansession": true,
+        "birthTopic": "",
+        "birthQos": "0",
+        "birthPayload": "",
+        "closeTopic": "",
+        "closeQos": "0",
+        "closePayload": "",
+        "willTopic": "",
+        "willQos": "0",
+        "willPayload": ""
+    },
+    {
+        "id": "4770f576.ff810c",
+        "type": "ui_group",
+        "z": "",
+        "name": "Heartbeat Mode",
+        "tab": "fff87d7d.74b4a",
+        "order": 3,
+        "disp": true,
+        "width": "6",
+        "collapse": false
+    },
+    {
+        "id": "908b7e93.714c3",
+        "type": "ui_group",
+        "z": "",
+        "name": "Sensor Data",
+        "tab": "fff87d7d.74b4a",
+        "order": 1,
+        "disp": true,
+        "width": "8",
+        "collapse": false
+    },
+    {
+        "id": "d4941965.e3bcf8",
+        "type": "influxdb",
+        "z": "",
+        "hostname": "127.0.0.1",
+        "port": "8086",
+        "protocol": "http",
+        "database": "ESP32SmartBoard",
+        "name": "LocalHost_ESP32SmartBoard",
+        "usetls": false,
+        "tls": ""
+    },
+    {
+        "id": "c1ab55e7.0031e8",
+        "type": "ui_group",
+        "z": "",
+        "name": "Write to DataBase",
+        "tab": "fff87d7d.74b4a",
+        "order": 4,
+        "disp": true,
+        "width": "6",
+        "collapse": false
+    },
+    {
+        "id": "92161f53.5af3d8",
+        "type": "ui_group",
+        "z": "",
+        "name": "LED Bar Indicator",
+        "tab": "fff87d7d.74b4a",
+        "order": 2,
+        "disp": true,
+        "width": "6",
+        "collapse": false
+    },
+    {
+        "id": "fff87d7d.74b4a",
+        "type": "ui_tab",
+        "z": "",
+        "name": "SmartBoard_Template",
+        "icon": "dashboard",
+        "order": 5,
+        "disabled": false,
+        "hidden": false
+    }
+]
