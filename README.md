@@ -1,6 +1,6 @@
-# ESP32SmartBoard_NodeRED
+﻿# ESP32SmartBoard_NodeRED
 
-This Node-RED Flow completes the Arduino Project [ESP32SmartBoard_MqttSensors](https://github.com/ronaldsieber/ESP32SmartBoard_MqttSensors) with a dashboard as well as enables to save the sensor data into a database. The dashboard shows the current sensor data and provides a GUI for configuring the runtime behavior of the *ESP32SmartBoard*.
+This Node-RED Flow completes the Arduino Project [ESP32SmartBoard_MqttSensors_BleCfg](https://github.com/ronaldsieber/ESP32SmartBoard_MqttSensors_BleCfg) with a dashboard as well as enables to save the sensor data into a database. The dashboard shows the current sensor data and provides a GUI for configuring the runtime behavior of the *ESP32SmartBoard*.
 
 ## Project Overview
 
@@ -31,6 +31,7 @@ The Node-RED Flow for the ESP32SmartBoard uses various third-party nodes that mu
  - node-red-dashboard
  - node-red-contrib-influxdb
  - node-red-contrib-bigtimer
+ - node-red-contrib-countdown
  - node-red-contrib-simple-gate
  - node-red-contrib-ui-led-fork
  - node-red-contrib-ui-level
@@ -50,23 +51,27 @@ To insert the Flow [ESP32SmartBoard_NodeRED](ESP32SmartBoard_NodeRED/ESP32SmartB
 ![\[Import Node\]](Documentation/Screenshot_ManagePalette_ImportNode.png)
 ## Linking the Node-RED Flow with the ESP32SmartBoard
 
-The *ESP32SmartBoard* and Node-RED Flow communicate with a set of MQTT messages. For this purpose, the flow uses three MQTT nodes, one for receiving sensor data (1x MQTT_In) and two additional nodes for sending configuration messages (2x MQTT_Out). The MQTT nodes are marked with color in the following image:
+The *ESP32SmartBoard* and Node-RED Flow communicate with a set of MQTT messages. For this purpose, the flow uses five MQTT nodes, one for receiving sensor data (1x MQTT_In) and two additional nodes for sending configuration messages (4x MQTT_Out):
 
 ![\[ESP32SmartBoard Flow\]](Documentation/Screenshot_ESP32SmartBoard_Flow.png)
 
-In order to be able to exchange data with each other, both, the *ESP32SmartBoard* and Node-RED Flow must use the same set of MQTT messages. Therefore, in order to link *ESP32SmartBoard* and Node-RED Flow, it is necessary to adopt the topics used by the board for the topics of the three MQTT nodes. This is done in the property dialog of the nodes by adjusting the "Topic" field accordingly:
+In order to be able to exchange data with each other, both, the *ESP32SmartBoard* and Node-RED Flow must use the same set of MQTT messages. Therefore, to link ESP32SmartBoard and Node-RED Flow, it is necessary to adopt the topics used by the board for four of the MQTT nodes (see marking in the image above). This is done in the property dialog of the nodes by adjusting the "Topic" field accordingly:
 
 ![\[Configure MQTT Topics\]](Documentation/Screenshot_MqttNode_PropertyDialog.png)
 
-Details on the structure of the topics are described in the section *"Individualization of the MQTT Topics at Runtime"* in the Arduino Project [ESP32SmartBoard_MqttSensors](https://github.com/ronaldsieber/ESP32SmartBoard_MqttSensors). In the standard configuration, the *ESP32SmartBoard* shows a list of all topics used in the serial terminal window during the boot process.
+Details on the structure of the topics are described in the section *"Individualization of the MQTT Topics at Runtime"* in the Arduino Project [ESP32SmartBoard_MqttSensors_BleCfg](https://github.com/ronaldsieber/ESP32SmartBoard_MqttSensors_BleCfg). In the standard configuration, the *ESP32SmartBoard* shows a list of all topics used in the serial terminal window during the boot process.
 
 ## Implementation Details of the Node-RED Flow
 
 The *ESP32SmartBoard* and the Node-RED Flow exchange their data via MQTT messages. The board's sensor data is read into the flow via the MQTT input node. The function node [Sensor_Decoder](FunctionNodes/Fun_Sensor_Decoder.js) works as a multiplexer and outputs the received sensor data depending on the topic (= sensor type) at one of its 3 outputs. As a result, each of the 3 following instrument widgets (temperature, humidity, CO2 level) only receives the data that is relevant for the respective element.
 
-In addition to the instrument widgets, the measured values ​​are displayed in compact form in a table. The function node [Table_Init](FunctionNodes/Fun_Table_Init.js) controls the initial initialization of the table once after the deployment. This ensures that the measured values ​​are always displayed in the same order defined in the JavaScript code of the function node and not randomly in the order in which they were first received. In the function node [Table_Update](FunctionNodes/Fun_Table_Update.js), the sensor data received via the MQTT input node are formatted and transferred to the table widget with a timestamp.
+In addition to the instrument widgets, the measured values ​​are displayed in compact form in a table. In the function node [Table_Update](FunctionNodes/Fun_Table_Update.js), the sensor data received via the MQTT input node are formatted and transferred to the table widget with a timestamp.
 
 In parallel to the display in the dashboard widgets, the sensor data is written to an InfluxDB database. This allows the measured values ​​to be evaluated later as a time series (e.g. in Grafana). The Influxdb_Out Node is responsible for writing the data to the database. The function node [InfluxDB_Insert](FunctionNodes/Fun_InfluxDB_Insert.js) in front extracts the sensor name from the received MQTT topic and move it as the `msg.measurement` attribute in the return object. The Influxdb_Out Node then takes it over from there as the measurement name for entering the data in the InfluxDB.
+
+The Function Node [Packet_ACK](FunctionNodes/Fun_Packet_ACK.js) extracts the packet number of the received sensor data packet, the subsequent n MQTT Output Node sends this back to the *ESP32SmartBoard* as an acknowledgement.
+
+The flow chain consisting of a *BigTimer* node and subsequent MQTT output node is used to control the cycle time of the data transmission from the *ESP32SmartBoard*. A cycle time of typically 1 minute is used during the day, while at night the transmission interval is increased to 2 minutes so that less data is written to the database.
 
 The two dropdown menus allow the user to configure the behavior of the board. To do this, the flow sends the corresponding MQTT messages to the board. The inject nodes in front of the dropdown nodes select the respective default values ​​from the dropdown menus once during deployment. The Heartbeat Mode (flashing of the blue LED on the ESP32DevKit) is controlled by the *BigTimer* node in the "Timer Automatic" state. The times for switching the Heartbeat on and off can be specified via the property dialog of the node:
 
